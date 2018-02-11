@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<webService>
+    <spec>
+        <name>svc1</name>
+        <url>http://localhost/Application/CountryStrategyModule/CSNotificationLifeCycleService.svc</url>
+        <user></user>
+        <passwd></passwd>
+    </spec>
+    <spec>
+        <name>svc2</name>
+        <url>http://localhost/Application/CountryStrategyModule/CSNotificationLifeCycleService2.svc</url>
+        <user></user>
+        <passwd></passwd>
+    </spec>
+</webService>
