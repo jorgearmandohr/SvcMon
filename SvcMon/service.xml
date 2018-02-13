@@ -2,15 +2,24 @@
 
 <webService>
     <spec>
-        <name>svc1</name>
-        <url>http://localhost/Application/CountryStrategyModule/CSNotificationLifeCycleService.svc</url>
+        <name>LoanManagementSecure</name>
+        <url>http://www.bing.com</url>
         <user></user>
         <passwd></passwd>
+        <domain></domain>
     </spec>
     <spec>
-        <name>svc2</name>
-        <url>http://localhost/Application/CountryStrategyModule/CSNotificationLifeCycleService2.svc</url>
-        <user></user>
-        <passwd></passwd>
+        <name>LoanManagementSecure</name>
+        <url>https://hqdabts01.idb.iadb.org/Idb.Esb.Operations.LoanManagement.Secure/LoanManagementService.svc</url>
+        <user>mvc_everis_dev</user>
+        <passwd>Password12345*</passwd>
+        <domain>idb</domain>
+    </spec>
+    <spec>
+        <name>EDW</name>
+        <url>https://hqdabts01.idb.iadb.org/Idb.Esb.Operations.EDW/EDWService.svc</url>
+        <user>mvc_everis_dev</user>
+        <passwd>Password12345*</passwd>
+        <domain>idb</domain>
     </spec>
 </webService>

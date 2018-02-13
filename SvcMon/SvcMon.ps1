@@ -5,21 +5,7 @@
 
 # Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 
-try
-{
-	[xml]$serviceDefinition = Get-Content service.xml
-	foreach($item in $serviceDefinition.webService.spec)
-	{
-		Write-Host "testing " $item.name $item.url;
-		ConnectUrl $item.url $item.user $item.password $item.domain #-url $item.url -user $item.user -passwd $item.password -domain $item.domain
-	}
-}
-catch
-{
-	Write-Host "error"
-}
-
-Function ConnectUrl($url, $user, $passwd, $domain)
+Function ConnectUrl([string]$url, [string]$user, [string]$passwd, [string]$domain)
 {
 	$request = [Net.HttpWebRequest]::Create($url)
 		If($user)
@@ -30,14 +16,41 @@ Function ConnectUrl($url, $user, $passwd, $domain)
 		{
 			$request.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 		}
+		If($cert)
+		{
+			
+		}
+		Else
+		{
+		}
+	
 	try
 	{
 		$response = [Net.HttpWebResponse]$request.GetResponse()
-		Write-Host "Ok"
 		$request.Abort()
+		return "Ok"
+		
 	}
-	catch
+	catch [Exception]
 	{
-		Write-Host "Fail"
+		 echo $_.Exception.GetType().FullName, $_.Exception.Message
+		return "Fail"
 	}
 }
+
+try
+{
+	[xml]$serviceDefinition = Get-Content service.xml
+	foreach($item in $serviceDefinition.webService.spec)
+	{
+		Write-Host "testing " $item.name $item.url;		
+		$responseResult = ConnectUrl $item.url $item.user $item.password $item.domain;
+		Write-Host $responseResult #-url $item.url -user $item.user -passwd $item.password -domain $item.domain
+	}
+}
+catch [Exception]
+{
+	 echo $_.Exception.GetType().FullName, $_.Exception.Message
+	Write-Host "Error"
+}
+
